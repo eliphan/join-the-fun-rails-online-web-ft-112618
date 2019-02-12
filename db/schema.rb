@@ -11,6 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20190212211802) do
+
+  create_table "passengers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "passengers_taxis", id: false, force: :cascade do |t|
+    t.integer "taxi_id",      null: false
+    t.integer "passenger_id", null: false
+  end
+
+  add_index "passengers_taxis", ["passenger_id", "taxi_id"], name: "index_passengers_taxis_on_passenger_id_and_taxi_id"
+  add_index "passengers_taxis", ["taxi_id", "passenger_id"], name: "index_passengers_taxis_on_taxi_id_and_passenger_id"
+
+  create_table "rides", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "taxis", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
