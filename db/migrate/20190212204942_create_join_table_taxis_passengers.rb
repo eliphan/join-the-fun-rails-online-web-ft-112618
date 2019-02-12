@@ -1,8 +1,8 @@
 class CreateJoinTableTaxisPassengers < ActiveRecord::Migration
   def change
     create_join_table :taxis, :passengers do |t|
-       t.integer :taxi_id
-       t.integer :passenger_id
+       t.index :taxi_id
+       t.index :passenger_id
     end
   end
 end
